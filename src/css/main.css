@@ -107,7 +107,8 @@
 }
 .cards {
     display: flex;
-    margin-top: 0.4%;
+    flex-wrap: wrap;
+    margin-top: 2rem;
     margin-bottom: 0.4%;
     gap: 3%;
     justify-content: center;
@@ -117,10 +118,11 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 20%;
+    width: 90%;
     border-radius: 5px;
     padding-bottom: 10px;
     animation: float 5s ease-in-out infinite;
+    margin-bottom: 20px;
 }
   
   .card:hover {
@@ -162,22 +164,22 @@ button:hover{
 
 @media (min-width: 480px) {
   .card {
-      width: calc(50% - 15px); 
+      width: calc(50% - 15px);
+      margin-bottom: 0;
   }
 }
 
-/* @media: Three columns on Tablet */
 @media (min-width: 768px) {
   .card {
-      width: calc(33.33% - 15px);
-      max-width: none; 
+      width: calc(33.33% - 2%);
+      max-width: none;
+      margin-bottom: 0;
   }
 }
 
-/* @media: Four columns on Desktop */
 @media (min-width: 1200px) {
   .card {
-      width: calc(25% - 15px);
+      width: calc(25% - 2.25px);
   }
 }
 
@@ -388,9 +390,159 @@ main{
   text-decoration: none;
   transition: color 200ms ease;
   font-size: 0.95rem;
-        }
+}
 
 .aside-link:hover {
   color: var(--color-primary-hover);
 }
 
+
+
+.nav {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .nav {
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 5px 0;
+  }
+
+.item a {
+    font-size: 16px;
+    margin: 0 5px;
+    letter-spacing: 1px;
+}
+
+.navbar nav {
+    height: auto;
+    padding: 10px 5px;
+  }
+}
+
+.visual-area {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .visual-area { 
+      justify-content: flex-end; 
+      margin-top: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .cards {
+      flex-wrap: nowrap;
+  }
+  .card {
+
+      width: calc(33.33% - 2%);
+      max-width: none; 
+      margin-bottom: 0;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--nav-color);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+  top: 100%; 
+  left: 50%; 
+  transform: translateX(-50%);
+  border-radius: 0 0 5px 5px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-shadow: none;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--color-primary-hover);
+  text-shadow: none;
+  letter-spacing: 1px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown > a:hover {
+  text-shadow: 4px 4px 4px #000;
+  letter-spacing: 2px; 
+}
+
+.dropdown-content a:before {
+  content: none !important;
+}
+
+.dropdown > a:hover:before {
+  transform: scaleX(0);
+}
+
+.darkmode .dropdown-content a {
+  color: var(--text-color);
+}
+
+.modal {
+    background-color: rgba(0,0,0,0.8); 
+    display: none; 
+    position: fixed; 
+    z-index: 20; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+}
+
+.modal-content {
+    background-color: var(--base-color); 
+    color: var(--text-color); 
+    margin: 10% auto; 
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    width: 80%; 
+    max-width: 600px; 
+}
+
+.close-button {
+  color: var(--text-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: var(--color-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
