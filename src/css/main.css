@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.hidden {
+    display: none !important;
+}
+
 :root {
   --color-primary: #0d9488;
   --color-primary-hover: #0f766e;
@@ -551,4 +555,167 @@ main{
   color: var(--color-primary);
   text-decoration: none;
   cursor: pointer;
+}
+
+.contact-section {
+    padding: 4rem 1rem; /* py-16 px-4 */
+    background-color: var(--color-bg-light); /* bg-gray-50 */
+}
+.darkmode .contact-section {
+    background-color: #1f2937; /* dark:bg-gray-800 */
+}
+
+.contact-form-card {
+    width: 100%;
+    max-width: 512px; /* max-w-lg */
+    margin: 0 auto; /* mx-auto */
+    background-color: var(--form-bg); /* bg-white dark:bg-gray-900 */
+    padding: 2rem 2.5rem; /* p-8 md:p-10 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); /* shadow-2xl */
+    border: 1px solid var(--color-gray-300); /* border border-gray-200 */
+}
+.darkmode .contact-form-card {
+    border-color: var(--color-gray-700); /* dark:border-gray-700 */
+}
+
+.contact-form-card h2 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    color: var(--text-color); /* text-gray-800 dark:text-white */
+    text-align: center;
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.contact-form-description {
+    color: var(--secondary-text); /* text-gray-600 dark:text-gray-400 */
+    text-align: center;
+    margin-bottom: 2rem; /* mb-8 */
+}
+
+.form-group {
+    margin-bottom: 1.25rem; /* mb-5 */
+}
+
+.form-label {
+    display: block; /* block */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    color: var(--color-gray-700); /* text-gray-700 */
+    margin-bottom: 0.25rem; /* mb-1 */
+}
+.darkmode .form-label {
+    color: var(--color-gray-300); /* dark:text-gray-300 */
+}
+
+.form-input {
+    width: 100%; /* w-full */
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border: 1px solid var(--color-gray-300); /* border border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out; /* transition duration-150 ease-in-out */
+    background-color: var(--color-white);
+    color: var(--color-gray-900);
+}
+.darkmode .form-input {
+    border-color: var(--color-gray-600); /* dark:border-gray-600 */
+    background-color: var(--color-gray-800); /* dark:bg-gray-800 */
+    color: var(--color-white); /* dark:text-white */
+}
+.form-input:focus {
+    border-color: #0d9488; /* focus:border-teal-500 */
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px #0d9488; /* focus:ring-teal-500 */
+}
+
+.form-input.textarea {
+    resize: vertical;
+    height: 6rem; /* rows-4 equivalent */
+    margin-bottom: 0.75rem; /* mb-6 */
+}
+
+.form-error-message {
+    color: #ef4444; /* text-red-500 */
+    font-size: 0.75rem; /* text-xs */
+    margin-top: 0.25rem; /* mt-1 */
+}
+
+.submit-button {
+    width: 100%; /* w-full */
+    background-color: #047857; /* bg-teal-600 (a shade darker for button) */
+    color: var(--color-white);
+    padding: 0.5rem 1rem; /* py-2 px-4 */
+    border-radius: 0.5rem; /* rounded-lg */
+    font-weight: 600; /* font-semibold */
+    transition: background-color 150ms ease-in-out;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1); /* shadow-md */
+    border: none;
+    cursor: pointer;
+}
+.submit-button:hover {
+    background-color: #0f766e; /* hover:bg-teal-700 */
+}
+
+/* --- Contact Form Validation & Message Styles --- */
+
+.error-border {
+    /* Applied via JS on error */
+    border-color: #ef4444 !important; /* Tailwind red-500 */
+    box-shadow: 0 0 0 2px #fca5a5; /* Tailwind red-300 */
+    animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Shake animation for visual error feedback */
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* Styling for the success/error message box */
+.message-box {
+    /* Used for notifications (untouched) */
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    color: white;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    max-width: 90%; 
+    text-align: center;
+}
+
+.message-box.show {
+    opacity: 1;
+}
+
+/* Footer Styles */
+footer {
+    /* Footer styles (untouched) */
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+}
+footer a {
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+/* Custom separator line */
+.separator-line {
+    border: none;
+    border-top: 1px solid var(--color-gray-300);
+    max-width: 1200px; 
+    margin: 0 auto;
 }
